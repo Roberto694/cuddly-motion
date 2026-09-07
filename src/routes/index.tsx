@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import BloomingRose from "@/components/BloomingRose";
+import { BloomingRose } from "@/components/BloomingRose";
 
 export const Route = createFileRoute("/")({
   head: () => ({
