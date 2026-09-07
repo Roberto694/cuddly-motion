@@ -128,7 +128,14 @@ export function BloomingRose() {
             <stop offset="55%" stopColor="oklch(0.55 0.23 23)" />
             <stop offset="100%" stopColor="oklch(0.68 0.24 26)" />
           </radialGradient>
-          <linearGradient id="stemGrad" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient
+            id="stemGrad"
+            gradientUnits="userSpaceOnUse"
+            x1="-6"
+            y1="0"
+            x2="6"
+            y2="0"
+          >
             <stop offset="0%" stopColor="oklch(0.34 0.09 145)" />
             <stop offset="50%" stopColor="oklch(0.52 0.13 145)" />
             <stop offset="100%" stopColor="oklch(0.32 0.08 145)" />
