@@ -625,3 +625,82 @@
   opacity: 0;
   animation: replay-in 1s ease 7s forwards;
 }
+
+/* ---- responsive tuning ---- */
+
+.envelope-wrap {
+  width: min(90vw, 460px);
+}
+
+.envelope {
+  height: clamp(160px, 48vw, 260px);
+}
+
+.rose-scene--embedded .rose-svg {
+  height: clamp(280px, 62vh, 620px);
+  max-width: 92vw;
+}
+
+@media (max-width: 640px) {
+  .letter {
+    width: 100%;
+    padding: 1.4rem 1.1rem 1.2rem;
+  }
+
+  .rain-word {
+    font-size: 11px !important;
+  }
+
+  .music-toggle {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .replay-button {
+    bottom: 1.2rem;
+    font-size: 0.78rem;
+    padding: 0.55rem 1.1rem;
+  }
+
+  .open-button {
+    bottom: -3.2rem;
+    padding: 0.7rem 1.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .envelope-wrap {
+    width: min(48vw, 560px);
+  }
+
+  .envelope {
+    height: clamp(240px, 22vw, 320px);
+  }
+
+  .rose-scene--embedded .rose-svg {
+    height: min(70vh, 700px);
+  }
+
+  .rain-word {
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-height: 560px) {
+  .rose-scene--embedded .rose-svg {
+    height: 88vh;
+  }
+
+  .envelope {
+    height: clamp(140px, 34vh, 200px);
+  }
+}
+
+.envelope {
+  pointer-events: none;
+  z-index: 1;
+}
