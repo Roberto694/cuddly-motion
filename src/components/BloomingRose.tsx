@@ -65,7 +65,13 @@ function FallingPetal({
   );
 }
 
-export function BloomingRose({ embedded = false }: { embedded?: boolean }) {
+export function BloomingRose({
+  embedded = false,
+  showMessage = true,
+}: {
+  embedded?: boolean;
+  showMessage?: boolean;
+}) {
   // Petal layers: outer layers bloom first, inner ones later.
   const layers = useMemo(
     () => [
@@ -213,11 +219,12 @@ export function BloomingRose({ embedded = false }: { embedded?: boolean }) {
         </g>
       </svg>
 
-      {/* Message */}
-      <p className="rose-message">
-        i coded this for <span className="rose-message-you">you</span>
-        <span className="rose-message-emoji">🌹</span>
-      </p>
+      {showMessage && (
+        <p className="rose-message">
+          i coded this for <span className="rose-message-you">you</span>
+          <span className="rose-message-emoji">🌹</span>
+        </p>
+      )}
     </div>
   );
 }

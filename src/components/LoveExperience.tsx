@@ -9,6 +9,7 @@ type Stage = "closed" | "opening" | "open" | "heart" | "rose";
 export function LoveExperience() {
   const [stage, setStage] = useState<Stage>("closed");
   const [muted, setMuted] = useState(false);
+  const [runKey, setRunKey] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   const timers = useRef<number[]>([]);
 
@@ -30,8 +31,8 @@ export function LoveExperience() {
     const audio = audioRef.current;
     if (audio) {
       audio.volume = 0.35;
-      audio.currentTime = 0;
-      void audio.play().catch(() => {});
+      audio.loop = true;
+      if (audio.paused) void audio.play().catch(() => {});
     }
     timers.current.push(window.setTimeout(() => setStage("rose"), 13000));
   }, []);
@@ -52,7 +53,7 @@ export function LoveExperience() {
 
       {stage === "rose" && (
         <div className="rose-holder">
-          <BloomingRose embedded />
+          <BloomingRose key={runKey} embedded showMessage={false} />
         </div>
       )}
 
@@ -93,7 +94,13 @@ export function LoveExperience() {
         <button
           type="button"
           className="replay-button"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            setRunKey((k) => k + 1);
+            setStage("heart");
+            timers.current.push(
+              window.setTimeout(() => setStage("rose"), 13000),
+            );
+          }}
         >
           Volver a verlo ♥
         </button>
