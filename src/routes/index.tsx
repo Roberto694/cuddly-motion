@@ -1,20 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BloomingRose } from "@/components/BloomingRose";
+import { LoveExperience } from "@/components/LoveExperience";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "I coded this for you 🌹" },
+      { title: "Para ti 🌹 — una carta, un corazón y una rosa" },
       {
         name: "description",
         content:
-          "Una rosa roja floreciendo en código — una animación hecha con amor.",
+          "Abre la carta, deja que el corazón lata y mira florecer la rosa: una animación hecha con amor y código.",
       },
-      { property: "og:title", content: "I coded this for you 🌹" },
+      { property: "og:title", content: "Para ti 🌹 — una carta, un corazón y una rosa" },
       {
         property: "og:description",
         content:
-          "Una rosa roja floreciendo en código — una animación hecha con amor.",
+          "Abre la carta, deja que el corazón lata y mira florecer la rosa: una animación hecha con amor y código.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -24,5 +24,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return <BloomingRose />;
+  return <LoveExperience />;
 }

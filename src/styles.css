@@ -350,3 +350,250 @@
   font-size: 0.8em;
   margin-top: 0.5rem;
 }
+
+/* ================= Love experience ================= */
+
+.love-stage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 45%, oklch(0.3 0.12 15 / 0.28), transparent 55%),
+    linear-gradient(180deg, oklch(0.09 0.02 280) 0%, oklch(0.11 0.05 15) 100%);
+}
+
+.heart-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+  pointer-events: none;
+}
+
+.love-stage[data-stage="heart"] .heart-canvas,
+.love-stage[data-stage="rose"] .heart-canvas {
+  opacity: 1;
+}
+
+.love-stage[data-stage="rose"] .heart-canvas {
+  opacity: 0.35;
+}
+
+/* ---- word rain ---- */
+
+@keyframes word-fall {
+  0% {
+    transform: translateY(-12vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(108vh) translateX(var(--drift, 0px));
+    opacity: 0;
+  }
+}
+
+.word-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rain-word {
+  position: absolute;
+  top: 0;
+  color: oklch(0.85 0.09 15);
+  font-family: "Georgia", serif;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  animation-name: word-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* ---- envelope ---- */
+
+.envelope-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  padding: 1.5rem;
+}
+
+.envelope-wrap {
+  position: relative;
+  width: min(88vw, 430px);
+  perspective: 1400px;
+}
+
+.envelope {
+  position: relative;
+  height: min(52vw, 250px);
+  border-radius: 16px;
+  background: linear-gradient(145deg, oklch(0.96 0.02 60), oklch(0.9 0.03 40));
+  box-shadow:
+    0 30px 60px oklch(0 0 0 / 0.45),
+    0 0 60px oklch(0.5 0.2 15 / 0.25);
+  transition: transform 1s ease;
+}
+
+.envelope-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 52%;
+  background: linear-gradient(180deg, oklch(0.94 0.03 45), oklch(0.84 0.06 35));
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  transition: transform 1.1s cubic-bezier(0.6, -0.2, 0.4, 1.3);
+  z-index: 4;
+  border-radius: 16px 16px 0 0;
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(160deg, oklch(0.93 0.02 50), oklch(0.86 0.04 35));
+  clip-path: polygon(0 30%, 50% 78%, 100% 30%, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.letter {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  width: 94%;
+  transform: translate(-50%, 0) scale(0.9);
+  opacity: 0;
+  border-radius: 14px;
+  background: linear-gradient(180deg, oklch(0.99 0.01 90), oklch(0.95 0.02 60));
+  box-shadow: 0 18px 40px oklch(0 0 0 / 0.35);
+  padding: 1.75rem 1.5rem 1.5rem;
+  text-align: center;
+  z-index: 8;
+  transition:
+    transform 1.1s cubic-bezier(0.2, 1, 0.3, 1),
+    opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.love-stage[data-stage="opening"] .envelope-flap,
+.love-stage[data-stage="open"] .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.love-stage[data-stage="open"] .letter {
+  transform: translate(-50%, -58%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-seal {
+  font-size: 1.6rem;
+  color: oklch(0.55 0.22 20);
+}
+
+.letter-title {
+  margin: 0.35rem 0 0.5rem;
+  font-family: "Georgia", serif;
+  font-size: clamp(1.05rem, 4.5vw, 1.5rem);
+  color: oklch(0.28 0.06 20);
+}
+
+.letter-text {
+  margin: 0 0 1.1rem;
+  font-size: clamp(0.85rem, 3.4vw, 1rem);
+  line-height: 1.5;
+  color: oklch(0.42 0.03 30);
+}
+
+.letter-cta,
+.open-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: oklch(0.99 0.01 20);
+  background: linear-gradient(135deg, oklch(0.58 0.22 18), oklch(0.48 0.2 8));
+  box-shadow: 0 12px 28px oklch(0.5 0.2 15 / 0.45);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.letter-cta {
+  padding: 0.7rem 1.2rem;
+  font-size: clamp(0.7rem, 2.9vw, 0.85rem);
+}
+
+.open-button {
+  position: absolute;
+  left: 50%;
+  bottom: -3.6rem;
+  transform: translateX(-50%);
+  padding: 0.8rem 2.2rem;
+  font-size: 0.95rem;
+  animation: rose-glow-pulse 3s ease-in-out infinite;
+}
+
+.open-button {
+  animation: none;
+}
+
+.letter-cta:hover,
+.open-button:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 34px oklch(0.5 0.2 15 / 0.6);
+}
+
+.open-button:hover {
+  transform: translateX(-50%) translateY(-2px) scale(1.04);
+}
+
+.music-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 6;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9999px;
+  border: 1px solid oklch(1 0 0 / 0.18);
+  background: oklch(0.2 0.04 15 / 0.55);
+  color: oklch(0.95 0.02 40);
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.rose-holder {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.rose-scene--embedded {
+  background: transparent;
+  min-height: 100%;
+  height: 100%;
+}
+
+.rose-scene--embedded .rose-svg {
+  height: min(56vh, 520px);
+}
