@@ -602,3 +602,26 @@
 .rose-scene--embedded .rose-svg {
   height: min(56vh, 520px);
 }
+
+@keyframes replay-in {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.replay-button {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  z-index: 6;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  border: 1px solid oklch(1 0 0 / 0.2);
+  background: oklch(0.22 0.06 15 / 0.5);
+  color: oklch(0.9 0.05 30);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  animation: replay-in 1s ease 7s forwards;
+}

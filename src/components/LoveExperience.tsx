@@ -89,6 +89,16 @@ export function LoveExperience() {
         </div>
       )}
 
+      {stage === "rose" && (
+        <button
+          type="button"
+          className="replay-button"
+          onClick={() => window.location.reload()}
+        >
+          Volver a verlo ♥
+        </button>
+      )}
+
       {started && (
         <button
           type="button"
