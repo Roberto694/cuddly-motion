@@ -699,3 +699,8 @@
     height: clamp(140px, 34vh, 200px);
   }
 }
+
+.envelope {
+  pointer-events: none;
+  z-index: 1;
+}
