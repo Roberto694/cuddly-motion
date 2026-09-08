@@ -22,13 +22,13 @@ const PHRASES = [
 ];
 
 /** Soft rain of compliments drifting down the screen. */
-export function WordRain({ count = 18 }: { count?: number }) {
+export function WordRain({ count = 14 }: { count?: number }) {
   const words = useMemo(
     () =>
       Array.from({ length: count }, (_, i) => {
         const r = (n: number) => ((Math.sin(i * 12.9898 + n) * 43758.5453) % 1 + 1) % 1;
         return {
-          text: PHRASES[Math.floor(r(1) * PHRASES.length) % PHRASES.length]!,
+          text: PHRASES[(i * 5 + Math.floor(r(1) * 3)) % PHRASES.length]!,
           left: r(2) * 100,
           duration: 10 + r(3) * 12,
           delay: -r(4) * 12,

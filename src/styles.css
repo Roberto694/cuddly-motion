@@ -381,6 +381,11 @@
   opacity: 0.35;
 }
 
+.love-stage[data-stage="rose"] .word-rain {
+  opacity: 0.45;
+  transition: opacity 2s ease;
+}
+
 /* ---- word rain ---- */
 
 @keyframes word-fall {
