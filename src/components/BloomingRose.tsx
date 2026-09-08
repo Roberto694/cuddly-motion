@@ -65,7 +65,7 @@ function FallingPetal({
   );
 }
 
-export function BloomingRose() {
+export function BloomingRose({ embedded = false }: { embedded?: boolean }) {
   // Petal layers: outer layers bloom first, inner ones later.
   const layers = useMemo(
     () => [
@@ -90,7 +90,7 @@ export function BloomingRose() {
   );
 
   return (
-    <div className="rose-scene">
+    <div className={embedded ? "rose-scene rose-scene--embedded" : "rose-scene"}>
       {/* Ambient glow behind the rose */}
       <div className="rose-glow" />
 
