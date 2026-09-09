@@ -502,6 +502,10 @@
   transform: rotateX(180deg);
 }
 
+.love-stage[data-stage="open"] .envelope-wrap {
+  pointer-events: none;
+}
+
 .love-stage[data-stage="open"] .letter {
   transform: translate(-50%, -58%) scale(1);
   opacity: 1;
