@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { BloomingRose } from "@/components/BloomingRose";
 import { HeartCanvas } from "@/components/HeartCanvas";
 import { WordRain } from "@/components/WordRain";
-import song from "@/assets/dandelions.mp3.asset.json";
+
+const songUrl = `${import.meta.env.BASE_URL}dandelions.mp3`;
 
 type Stage = "closed" | "opening" | "open" | "heart" | "rose";
 
@@ -117,7 +118,7 @@ export function LoveExperience() {
         </button>
       )}
 
-      <audio ref={audioRef} loop preload="auto" src={song.url} />
+      <audio ref={audioRef} loop preload="auto" src={songUrl} />
     </main>
   );
 }
